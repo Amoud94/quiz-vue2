@@ -59,6 +59,7 @@ export default {
       result: [],
       disableSelection: false,
       name:'',
+      // notification top-end setup
       Toast : this.$swal.mixin({
         toast: true,
         position: 'top-end',
@@ -124,12 +125,14 @@ export default {
     confirmResult() {
       if(this.name) {
         this.$store.dispatch("setResult", {"name": this.name, "score": this.score})
+        // success notification
         this.$swal.fire(
             'Done!',
             'Result saved successfully',
             'success'
         )
       }else{
+        // error notification
         this.Toast.fire({
           icon: 'error',
           title: 'Please make sure to enter your name before submitting the final result',
